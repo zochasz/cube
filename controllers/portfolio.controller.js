@@ -48,7 +48,7 @@ module.exports.remove = (req, res, next) => {
 }
 
 module.exports.getOne = (req, res, next) => {
-  Portfolio.find({_id: req.params.id})
+  Portfolio.find({ _id: req.params.id })
   .then(portfolio => res.status(200).json(portfolio))
   .catch(err => next(err));
 }
