@@ -4,11 +4,11 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors');
 
 require('./configs/db.config');
 
-// const corsOptions = require('./configs/cors.config');
+const corsOptions = require('./configs/cors.config');
 
 const authRoutes = require('./routes/auth.route');
 const userRoutes = require('./routes/user.route');
