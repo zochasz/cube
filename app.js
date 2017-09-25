@@ -1,14 +1,22 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+// const cors = require('cors');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+// require('./configs/db.config');
 
-var app = express();
+// const corsOptions = require('./configs/cors.config');
+
+const authRoutes = require('./routes/auth.route');
+const userRoutes = require('./routes/user.route');
+const projectRoutes = require('./routes/project.route');
+const letterRoutes = require('./routes/letter.route');
+const portfolioRoutes = require('./routes/portfolio.route');
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,8 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+const apiPrefix = '/api'
+app.use(`${apiPrefix}`, authRoutes);
+app.use(`${apiPrefix}`, userRoutes);
+app.use(`${apiPrefix}`, projectRoutes);
+app.use(`${apiPrefix}`, letterRoutes);
+app.use(`${apiPrefix}`, portfolioRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
