@@ -3,51 +3,52 @@ const User = require('../models/user.model');
 const Letter = require('../models/letter.model');
 const passport = require('passport');
 
+
 module.exports.getAll = (req, res, next) => {
-  Project.find({author: req.user._id})
-      .then(project => res.status(200).json(project))
-      .catch(err => next(err));
+  Letter.find({author: req.user._id})
+        .then(letter => res.status(200).json(letter))
+        .catch(err => next(err));
 }
 
 module.exports.create = (req, res, next) => {
-  // const project = Object.assign({}, req.body);
-  const project = req.body;
-  project.author = req.user._id;
+  // const letter = Object.assign({}, req.body);
+  const letter = req.body;
+  letter.author = req.user._id;
 
-  Project.create(project)
-        .then(project => {
-          res.status(201).json(project);
+  Letter.create(letter)
+        .then(letter => {
+          res.status(201).json(letter);
         })
         .catch(err => next(err));
 }
 
 module.exports.edit = (req, res, next) => {
 
-  Project.findByIdAndUpdate(req.params.id, { $set: req.body }, { new : true})
-      .then(project => {
-          if (!project) {
-              res.status(404).json();
-          } else {
-              res.status(200).json(project)
-          }
-      })
-      .catch(err => next(err));
+  Letter.findByIdAndUpdate(req.params.id, { $set: req.body }, { new : true})
+        .then(letter => {
+            if (!letter) {
+                res.status(404).json();
+            } else {
+                res.status(200).json(letter)
+            }
+        })
+        .catch(err => next(err));
 }
 
 module.exports.remove = (req, res, next) => {
-  Project.remove({ _id: req.params.id })
-      .then(removed => {
-        if (removed.result.n>0) {
-          res.status(204).json({ message: ' Project removed' });
-        } else {
-          res.status(404).json({ message: 'Not removed' });
-        }
-      })
-      .catch(err => next(err));
+  Letter.remove({ _id: req.params.id })
+        .then(removed => {
+          if (removed.result.n>0) {
+            res.status(204).json({ message: 'Letter removed' });
+          } else {
+            res.status(404).json({ message: 'Not removed' });
+          }
+        })
+        .catch(err => next(err));
 }
 
 module.exports.getOne = (req, res, next) => {
-  Project.find({_id: req.params.id})
-  .then(project => res.status(200).json(project))
-  .catch(err => next(err));
+  Letter.find({_id: req.params.id})
+        .then(letter => res.status(200).json(letter))
+        .catch(err => next(err));
 }
