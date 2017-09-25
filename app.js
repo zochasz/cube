@@ -5,9 +5,11 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const session = require('express-session');
+const passport = require('passport');
 
 require('./configs/db.config');
-
+require('./configs/passport.config').setup(passport);
 const corsOptions = require('./configs/cors.config');
 
 const authRoutes = require('./routes/auth.route');
@@ -20,17 +22,20 @@ const app = express();
 
 app.use(cors(corsOptions));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'CubeSuperSecret',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { httpOnly: true, maxAge: 2419200000 }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 const apiPrefix = '/api'
 app.use(`${apiPrefix}`, authRoutes);
@@ -54,7 +59,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({ message: err.message });
 });
 
 module.exports = app;
