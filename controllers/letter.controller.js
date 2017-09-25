@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/user.model');
+const Letter = require('../models/letter.model');
 const passport = require('passport');
 
 module.exports.getAll = (req, res, next) => {
