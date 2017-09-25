@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 // const cors = require('cors');
 
-// require('./configs/db.config');
+require('./configs/db.config');
 
 // const corsOptions = require('./configs/cors.config');
 
