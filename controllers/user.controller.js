@@ -4,7 +4,7 @@ const passport = require('passport');
 
 
 module.exports.get = (req, res, next) => {
-  User.find(req.user._id)
+  User.findOne(req.user._id)
       .then(user => res.status(200).json(user))
       .catch(err => next(err));
 }

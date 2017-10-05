@@ -48,7 +48,7 @@ module.exports.remove = (req, res, next) => {
 }
 
 module.exports.getOne = (req, res, next) => {
-  Letter.find({_id: req.params.id})
+  Letter.findOne({_id: req.params.id})
         .then(letter => res.status(200).json(letter))
         .catch(err => next(err));
 }

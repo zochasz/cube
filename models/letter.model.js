@@ -2,15 +2,14 @@ const mongoose = require('mongoose');
 
 const letterSchema = new mongoose.Schema({
 
+    title: String,
     from: String,
     to: String,
-    title: String,
     text: String,
     author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
-    },
-    title: String
+    }
 
 }, {timestamps: true});
 

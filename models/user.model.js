@@ -16,59 +16,57 @@ const userSchema = new mongoose.Schema({
     lastName: String,
     url: String,
     phoneNo: String,
-    address: {
-      street: String,
-      streetNo: String,
-      zipCode: String,
-      city: String
-    },
+    address: String,
     linkedIn: String,
     instagram: String,
     pinterest: String,
     languages: [{
-      langName: String,
-      langLevel: {
+      name: String,
+      level: {
         type: String,
-        enum: ["Elementary", "First Certificate", "Advanced", "Mother Tongue"]
+        enum: ["Elementary", "Intermediate", "Advanced", "Mother Tongue"]
       }
     }],
     hardskills: [{
-      hskillName: String,
-      hskillLevel: {
+      name: String,
+      level: {
         type: Number,
         enum: [1, 2, 3, 4]
       }
     }],
     softskills: [{
-      sskillName: String,
-      sskillLevel: {
+      name: String,
+      level: {
         type: Number,
         enum: [1, 2, 3, 4]
       }
     }],
     education: [{
-      schoolName: String,
-      timePeriod: String,
+      name: String,
+      from: Date,
+      to: Date,
       title: String,
+      description: String
     }],
-    complementaryEdication: [{
-      schoolName: String,
-      timePeriod: String,
+    complementaryEducation: [{
+      name: String,
+      from: Date,
+      to: Date,
       title: String,
+      description: String
     }],
     experience: [{
-      startDate: String,
-      endDate: String,
-      jobName: String,
-      jobDescription: String
+      name: String,
+      title: String,
+      from: Date,
+      to: Date,
+      description: String
     }],
     profile: {
       type: String,
       max: 200
     },
-    interests: [{
-      interestName: String
-    }]
+    interests: [{ String }]
 }, {timestamps: true});
 
 userSchema.pre('save', function save(next) {
