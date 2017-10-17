@@ -17,7 +17,11 @@ const projectSchema = new mongoose.Schema({
     externalEngineer: [String],
     client: String,
     description: String,
-    location: String
+    location: String,
+    image1: String,
+    image2: String,
+    image3: String,
+    image4: String
 }, {timestamps: true});
 
 const Project = mongoose.model('Project', projectSchema);

@@ -11,7 +11,8 @@ module.exports.get = (req, res, next) => {
 
 module.exports.edit = (req, res, next) => {
   delete req.body.passport;
-  User.findByIdAndUpdate(req.user._id, { $set: req.body }, { new : true})
+  console.log(req.body);
+  User.findByIdAndUpdate(req.user._id, { $set: req.body }, { new : true })
       .then(user => {
           if (!user) {
               res.status(404).json();

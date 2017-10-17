@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../models/user.model');
 const Portfolio = require('../models/portfolio.model');
 const passport = require('passport');
-
+const randomstring = require("randomstring");
 
 module.exports.getAll = (req, res, next) => {
   Portfolio.find({author: req.user._id})
@@ -12,8 +12,10 @@ module.exports.getAll = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
   // const portfolio = Object.assign({}, req.body);
+  const publicID = randomstring.generate();
   const portfolio = req.body;
   portfolio.author = req.user._id;
+  // portfolio.publicID = publicID;
 
   Portfolio.create(portfolio)
         .then(portfolio => {
@@ -49,6 +51,9 @@ module.exports.remove = (req, res, next) => {
 
 module.exports.getOne = (req, res, next) => {
   Portfolio.findOne({ _id: req.params.id })
+  .populate("projects")
+  .populate("letters")
+  .populate("author")
   .then(portfolio => res.status(200).json(portfolio))
   .catch(err => next(err));
 }

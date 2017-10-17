@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../models/user.model');
 const Project = require('../models/project.model');
 const passport = require('passport');
-
+const upload = require('../configs/multer.config');
 
 module.exports.getAll = (req, res, next) => {
   Project.find({author: req.user._id})
