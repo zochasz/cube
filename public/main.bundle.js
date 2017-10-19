@@ -2643,7 +2643,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAYCAYAAABw
 // The file contents for the current environment will overwrite these during build.
 var environment = {
     production: false,
-    base_api: 'http://localhost:3000/api'
+    base_api: ''
 };
 //# sourceMappingURL=environment.js.map
 
