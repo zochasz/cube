@@ -475,7 +475,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n  <h1><a href=\"/dashboard\"> C U B E </a></h1>\n  <img src=\"../../../assets/cubo.gif\">\n  <div class=\"dropdown\">\n    <button class=\"dropbtn\"></button>\n      <div class=\"dropdown-content\">\n        <a *ngIf=\"!user\" (click)=\"register()\">Register</a>\n        <a *ngIf=\"!user\" (click)=\"login()\">Login</a>\n        <a *ngIf=\"user\" href=\"/dashboard\">HOME</a>\n        <a *ngIf=\"user\" href=\"/cv\">CV</a>\n        <a *ngIf=\"user\" (click)=\"logout()\">Logout</a>\n      </div>\n  </div>\n</header>\n"
+module.exports = "<header>\n  <h1><a href=\"/dashboard\"> C U B E </a></h1>\n  <img src=\"images/cubo.gif\">\n  <div class=\"dropdown\">\n    <button class=\"dropbtn\"></button>\n      <div class=\"dropdown-content\">\n        <a *ngIf=\"!user\" (click)=\"register()\">Register</a>\n        <a *ngIf=\"!user\" (click)=\"login()\">Login</a>\n        <a *ngIf=\"user\" href=\"/dashboard\">HOME</a>\n        <a *ngIf=\"user\" href=\"/cv\">CV</a>\n        <a *ngIf=\"user\" (click)=\"logout()\">Logout</a>\n      </div>\n  </div>\n</header>\n"
 
 /***/ }),
 
