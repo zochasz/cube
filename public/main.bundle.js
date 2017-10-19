@@ -2252,7 +2252,7 @@ var BaseApiService = BaseApiService_1 = (function () {
     };
     return BaseApiService;
 }());
-BaseApiService.baseApi = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].base_api;
+BaseApiService.baseApi = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].base_api + "/api";
 BaseApiService.defaultHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
 BaseApiService.defaultOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: BaseApiService_1.defaultHeaders, withCredentials: true });
 BaseApiService.defaultSort = ['updatedAt'];
