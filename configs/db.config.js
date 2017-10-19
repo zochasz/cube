@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dbName = 'cube-api';
-const dbUri = `mongodb://localhost/${dbName}`;
+const dbUri = `mongodb://heroku_1wz3k9gt:VzPUEaj7DiREYYLKJRC1nlO6MoD6crui@ds125365.mlab.com:25365/heroku_1wz3k9gt`;
 
 mongoose.connect(dbUri, { useMongoClient: true });
 
